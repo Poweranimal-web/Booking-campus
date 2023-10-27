@@ -7,7 +7,7 @@
     height: 100%;
     width: 100%;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(30, 30, 30, 0.8);
 }
 
 .modal {
@@ -46,6 +46,12 @@
     justify-content: space-between;
 }
 #close-button{
+    background-color: #2e2e2e;
+    border: none;
+    width: 40px;
+    margin-left: auto;
+}
+#close-button-login{
     background-color: #2e2e2e;
     border: none;
     width: 40px;
@@ -115,11 +121,22 @@
     margin-top: 10px;
     cursor: pointer;
 }
+#forgot-button {
+    background-color: #2e2e2e;
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
 
 #login-button:hover {
     text-decoration: underline;
 }
 #error{
+    display: none;
+    color: #f00;
+}
+#error-login{
     display: none;
     color: #f00;
 }

@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/fonts/Gilroy-Bold.woff') format('woff2'), /* Если у вас есть файл WOFF2 */
+         url('/fonts/Gilroy-ExtraBold.woff') format('woff'); /* Если у вас есть файл WOFF */
+    /* Дополнительные форматы шрифта можно указать здесь */
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal
+}
+
+.container{
+    max-width: 1650px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header{
+    height: 100%;
+    background:url("../img/bg2.jpg") no-repeat;
+    background-size: cover;
+    padding-bottom: 5px;
+
+
+}
+
+ul{
+    display: flex;
+}
+a{
+    text-decoration: none;
+}
+ul li{
+    list-style: none;
+    font-family: 'Gilroy', sans-serif;
+    padding-left: 45px;
+    font-size: 32px;
+}
+
+
+ul li:first-child{
+    padding-left: 0px;
+}
+ul li a{
+    color: white;
+}
+
+ul li select{
+    color: white;
+    border: none;
+    background-color: transparent;
+    outline: none; 
+}
+
+ul li select option{
+    color: white;
+    border-color: none;
+    outline: none;
+    background-color: rgba(30, 30, 30, 0.9);
+}
+
+.menu_main_wraper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.title_main{
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 74px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin: 0;
+}
+.main_title_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+.main_title_left p{
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+.main_enterens_button{
+    border-radius: 100px;
+    background: #F84D4D;
+    color: #FFF;
+    font-family: 'Gilroy';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 21px 106px;
+}
+
+.main_info_bootom_ultra_wrapper_ultimate_edition_extra_spasce_x_development_tochka_net_sobachka_tochka_com{
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main_contact_info_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main_info_bottom:first-child {
+    padding-right: 50px;
+}
+.main_info_bottom{
+    display: flex;
+}
+.main_info_bottom span{
+    display: block;
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-left: 14px;
+}
+.working_hours{
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding-left: 90px
+}
+
+#telegram{
+    width: 47px;
+    margin-right: 10px;
+}

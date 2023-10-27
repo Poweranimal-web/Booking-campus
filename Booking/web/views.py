@@ -11,6 +11,7 @@ class MainPage(View):
         return render(request,"main.html", locals())
     def post(self, request):
         data = json.loads(request.body)
+
         if data["status"] == "create_user":
                 exist_email = User.objects.filter(email=data["email"]).exists()
                 if exist_email:
@@ -24,6 +25,14 @@ class MainPage(View):
                     request.session["auth"] = True
                     request.session["email"] = data["email"]
                     return JsonResponse({"status": "created account"})
+        elif data["status"] == "check_user":
+            exist_user = User.objects.filter(email=data["email"], password=data["password"]).exists()
+            if exist_user:
+                request.session["auth"] = True
+                request.session["email"] = data["email"]
+                return JsonResponse({"status": "exist_account"})
+            else:
+                return JsonResponse({"status": "not_exist_account", "error": "Такого аккаунту не уснує, будь ласка перевірте ще раз"})
         return JsonResponse(data)
 class Logout(View):
     def get(self, request):
