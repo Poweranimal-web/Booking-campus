@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css\redModal.css' %}">
+    <link rel="stylesheet" href="{% static 'css\main.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto:ital,wght@0,100;0,400;0,700;1,100&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="main.html">
+                <img src="{% static 'img\Лого_англ_гориз_кольор.png'%}" alt="Dnipro University of Technology 1899">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="dorms.html">Обрати гуртожиток</a></li>
+                <li><a href="account.html">Особистий кабінет</a></li>
+                {% if request.session.auth %}
+                  <li><a href="{% url 'logout' %}">Вийти</a></li>
+                {% endif %}
+                <li>
+                    <select id="language">
+                        <option value="ua">UA</option>
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+      {% if request.session.auth is not True %}
+          <div class="modal-container" id="modal-window">
+            <form class="modal" id="form_reg">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="custom-select">
+                        <select id="faculty">
+                            {% for faculty in faculties %}
+                              <option value={{faculty.id}}>{{faculty.faculty}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button id="close-button" type="button"><img src="{% static 'img\image 0.png' %}" height="20px" width="20px"/></button>
+                </div>
+                <input type="text" placeholder="Ім'я" id="first" required>
+                <input type="text" placeholder="Прізвище" id="last" required>
+                <input type="email" placeholder="E-mail" id="email" required>
+                <input type="password" placeholder="Пароль" id="password" required>
+                <input type="password" placeholder="Повторіть пароль" id="repeat_password" required>
+                <span id="error"></span>
+                <button class="registration-button" type="submit" id="reg_btn">Зареєструватись</button>
+                <button id="login-button">Увійти</button>
+            </form>
+          </div>
+      {% endif %}
+        <div class="main-container">
+            <div class="main-text-container">
+                <h1>
+                    Швидке заселення у<br>гуртожиток
+                </h1>
+                <p>
+                    Заселення у гуртожиток за 5 хвилин
+                </p>
+                {% if request.session.auth %}
+                    <p>Ласкаво просимо!</p>
+                {% else %}
+                  <button id="click">
+                    Заселитися
+                  </button>
+                {% endif %}
+            </div>
+            <div class="main-photo-container">
+                <img src="{% static 'img\36_full.jpg'%}" alt="Гуртожиток №1">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="main-footer-container">
+        <div class="phone-number-container">
+                <img src="{% static 'img\phone-solid-2 1.png'%}" alt="phone-icon">
+                <p>+38-093-403-32-27</p>
+                <img src="{% static 'img\phone-solid-2 1.png'%}" alt="phone-icon">
+                <p>+38-093-403-32-27</p>
+        </div>
+        <div class="sn-container">
+            <a href="#">
+                <img src="{% static 'img\image 5.png' %}" alt="tg-icon">
+            </a>
+            <a href="#">
+                <img src="{% static 'img\image 6.png' %}" alt="vb-icon">
+            </a>
+        </div>
+        </div>
+    </footer>
+    <script src="{% static 'js\main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+body,
+h1,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #20232a;
+}
+
+.logo img {
+    height: 95px;
+    align-self: flex-start;
+    /* aligns logo to top */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style-type: none;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+}
+
+nav a,
+select {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+select {
+    background-color: #20232a;
+    border: none;
+}
+
+.main-container {
+    display: flex;
+    padding: 40px 20px;
+    justify-content: space-between;
+    background-color: #20232a;
+}
+
+.main-text-container,
+.main-photo-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-text-container h1 {
+    font-size: 46px;
+    margin-bottom: 20px;
+    color: white;
+    margin-right: 300px;
+    font-family: "Roboto", sans-serif;
+}
+
+.main-text-container p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: white;
+    margin-right: 410px;
+    font-family: "Roboto", sans-serif;
+}
+
+.main-text-container button {
+    padding: 10px 20px;
+    background-color: #F84D4D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    height: 50px;
+    width: 240px;
+    margin-right: 510px;
+    font-size: 20px;
+    font-style: bold;
+}
+
+.main-photo-container img {
+    max-width: 91%;
+    border-radius: 15px;
+    margin-right: 100px;
+}
+
+footer {
+    background-color: #20232a;
+    color: white;
+    padding: 23px; 
+}
+
+.main-footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.phone-number-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-left: 80px;
+    font-size: 20px;
+}
+
+.phone-number-container img {
+    height: 20px;
+}
+
+.sn-container {
+    display: flex;
+    gap: 20px;
+    margin-right: 100px;
+}
+
+.sn-container img {
+    height: 40px;
+    width: 40px;
+}
+
+main {
+    flex: 1;
+}
