@@ -11,12 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 </head>
 <body>
   {% if request.session.auth is not True %}
     <div class="modal-container" id="modal-window">
       <form class="modal" id="form_reg">
-          {% csrf_token %}
           <div class="row">
               <div class="custom-select">
                   <select id="faculty">
@@ -41,7 +41,6 @@
   {% if request.session.auth is not True %}
     <div class="modal-container" id="modal-login">
       <form class="modal" id="form_login">
-          {% csrf_token %}
           <div class="row">
               <button id="close-button-login" type="button"><img src="{% static 'img\image 0.png' %}" height="20px" width="20px"/></button>
           </div>
@@ -80,7 +79,7 @@
                     <h1 class="title_main">Швидке заселення у гуртожиток</h1>
                     <p >Заселення у гуртожиток за 5 хвилин</p>
                     {% if request.session.auth %}
-                      <a href="#"><button class="main_enterens_button">Заселитися</button></a>
+                      <a href="{% url 'profile' %}"><button class="main_enterens_button">Заселитися</button></a>
                     {% else %}
                         <button class="main_enterens_button" id="click">Заселитися</button>
                     {% endif %}
@@ -111,6 +110,32 @@
             </div>   
         </div>
     </header>
+    <footer>
+      <div class="container">
+          <div class="contact-data">
+                <h1>Контакти</h1>
+                <p>Приймальна комісія</p>
+                <div class="info">
+                  <img src="{% static 'img\phone.png' %}" alt="phone" height="20px" width="20px">
+                  <span>093 (403)32 27</span>    
+                </div>
+              <div class="info">
+                <img src="{% static 'img\phone.png' %}" alt="phone" height="20px" width="20px">
+                <span>093 (403)32 27</span>    
+            </div>
+          </div>
+          <div class="logo-footer">
+            <img src="{% static 'img\logo.png' %}" alt="logo">
+          </div>
+          <div class="description">
+              <hr/>
+              <p>© 2023 designed and developed by Bug Hunters Team</p>
+          </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="{% static 'js\main.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+{% extends 'adminBase.html' %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css\adminProfile.css' %}">
+{% endblock %}
+{% block content %}
+        <div class="profile-container">
+            <img class="profile-info" src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0="  id="profile-photo" alt="photo">
+            <!-- <div class="change-info-form"> -->
+                <!-- <label for="nickname">Nick Name</label>
+                <input type="text" id="nickname" name="nickname"> -->
+                <form class="change-info-form" id="form">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name">
+
+                    <label for="surname">Фамилия</label>
+                    <input type="text" id="surname" name="surname">
+
+                    <label for="email">e-mail</label>
+                    <input type="email" id="email" name="email">
+
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password">
+
+                    <label for="repeatPassword">Повторите Пароль</label>
+                    <input type="password" id="repeatPassword" name="repeatPassword">
+                    <label for="changeAvatar">Оберіть фото</label>
+                    <input type="file" id="changeAvatar" name="changeAvatar">
+                    <span id="error"></span>
+                    <button id="form-button" type="submit">Оновити дані</button>
+                </form>
+            <!-- </div> -->
+        </div>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js\profile.js' %}"></script>
+{% endblock %}

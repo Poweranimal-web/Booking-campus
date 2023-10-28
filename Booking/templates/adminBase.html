@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block css %}
+    {% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto:ital,wght@0,100;0,400;0,700;1,100&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <header id="admin-header">
+
+        <div class="logo">
+            <a href="{% url 'main' %}">
+                <img src="{% static 'img\Лого_англ_гориз_кольор.png' %}" alt="DUT1899">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Обрати гуртожиток</a></li>
+                <li><a href="#">Особистий кабінет</a></li>
+                <li>
+                    <select id="language">
+                        <option value="ua">UA</option>
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                    </select>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrap-body">
+        <aside>
+            <div class="sections">
+                <a href="{% url 'profile' %}"><p>Профіль</p></a>
+                <a href="{% url 'application' %}"><p>Мої заявки</p></a>
+                <p>Наші гуртожитки</p>
+                <p>Новини</p>
+            </div>
+        </aside>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>

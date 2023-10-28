@@ -1,0 +1,149 @@
+
+{% extends 'adminBase.html' %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css\adminApplied.css' %}">
+{% endblock %}
+{% block content %}
+            <div class="applied-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Номер заяви</th>
+                            <th>Статус заяви</th>
+                            <th>Дата подачі</th>
+                            <!-- <th>У черзі з:</th> -->
+                            <th>Дата заселення</th>
+                            <th>Кімната</th>
+                            <th>Гуртожиток №</th>
+                            <th>Поверх</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                        {% for application in applications%}
+                            <tr>
+                                <td>
+                                    <p>{{application.number_application}}</p>
+                                </td>
+                                <td>
+                                    <p>{{application.status}}</p>
+                                </td>
+                                <td>
+                                    <p>{{application.date_create_application|date:"d.m.Y" }}</p>
+                                </td>
+                                <td>
+                                    <p>>{{application.date_handle_application|date:"d.m.Y"}}</p>
+                                </td>
+                                <td>
+                                    <p>{{application.room.number}}</p>
+                                </td>
+                                <td>
+                                    <p>{{application.room.campus.number}}</p>
+                                </td>
+                                <td>
+                                    <p>{{application.room.floor.number}}</p>
+                                </td>
+                                <td>
+                                    <button class="abandon-btn" value={{application.id}}>Відмінити</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <!-- <tr>
+                            <td>
+                                <p>1488</p>
+                            </td>
+                            <td>
+                                <p>На розгляді</p>
+                            </td>
+                            <td>
+                                <p>01.09.1939</p>
+                            </td>
+                            <td>
+                                <p>08.05.1945</p>
+                            </td>
+                            <td>
+                                <p>10.05.1945</p>
+                            </td>
+                            <td>
+                                <p>88</p>
+                            </td>
+                            <td>
+                                <button class="abandon-btn">Відмінити</button>
+                            </td>
+                        </tr> -->
+                        <!-- <tr>
+                            <td>
+                                <p>1488</p>
+                            </td>
+                            <td>
+                                <p>На розгляді</p>
+                            </td>
+                            <td>
+                                <p>01.09.1939</p>
+                            </td>
+                            <td>
+                                <p>08.05.1945</p>
+                            </td>
+                            <td>
+                                <p>10.05.1945</p>
+                            </td>
+                            <td>
+                                <p>88</p>
+                            </td>
+                            <td>
+                                <button class="abandon-btn">Відмінити</button>
+                            </td>
+                        </tr> -->
+                        <!-- <tr>
+                            <td>
+                                <p>1488</p>
+                            </td>
+                            <td>
+                                <p>На розгляді</p>
+                            </td>
+                            <td>
+                                <p>01.09.1939</p>
+                            </td>
+                            <td>
+                                <p>08.05.1945</p>
+                            </td>
+                            <td>
+                                <p>10.05.1945</p>
+                            </td>
+                            <td>
+                                <p>88</p>
+                            </td>
+                            <td>
+                                <button class="abandon-btn">Відмінити</button>
+                            </td>
+                        </tr> -->
+                        <!-- <tr>
+                            <td>
+                                <p>1488</p>
+                            </td>
+                            <td>
+                                <p>На розгляді</p>
+                            </td>
+                            <td>
+                                <p>01.09.1939</p>
+                            </td>
+                            <td>
+                                <p>08.05.1945</p>
+                            </td>
+                            <td>
+                                <p>10.05.1945</p>
+                            </td>
+                            <td>
+                                <p>88</p>
+                            </td>
+                            <td>
+                                <button class="abandon-btn">Відмінити</button>
+                            </td>
+                        </tr>                         -->
+                    </tbody>
+                </table>
+            </div>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js\application.js' %}"></script>
+{% endblock %}

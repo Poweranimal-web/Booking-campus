@@ -144,3 +144,44 @@ ul li select option{
     width: 47px;
     margin-right: 10px;
 }
+footer{
+    height: 100%;
+    background:url("../img/bg2.jpg") no-repeat;
+    background-size: cover;
+}
+.contact-data{
+    display: flex;
+    color: white;
+    flex-direction: column;
+    font-family: 'Roboto';
+}
+.info{
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+.contact-data h1{
+    font-size: 64px;
+    margin-bottom: 0;
+}
+.contact-data p{
+    font-size: 32px;
+}
+.logo-footer{
+    display: flex;
+    justify-content: end;
+    margin-left: auto;
+    transform: translateY(-175%)
+}
+
+.description hr{
+    width: 100%;
+    margin: 2rem 0;
+
+}
+.description p{
+    font-family: "Gilroy";
+    color: white;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 0;
+}

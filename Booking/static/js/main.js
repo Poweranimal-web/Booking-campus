@@ -17,7 +17,7 @@ function getCookie(name) {
     if (document.cookie && document.cookie !== '') {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
+            var cookie = jQuery.trim(cookies[i]);
             // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -27,7 +27,6 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-const csrftoken = getCookie('csrftoken');
 function show_register_modal(event){
     event.preventDefault();
     modal.style.display = "flex";
@@ -74,12 +73,15 @@ function check_match_passwords(password, repeat_password){
 }
 async function check_user(event){
     event.preventDefault();
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append("X-Requested-With", "XMLHttpRequest");
+    // headers.append('X-CSRFToken', getCookie("csrftoken"));
     const response = await fetch("http://127.0.0.1:8000/",{
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": csrftoken
-            },
+            headers: headers,
+            credentials: "same-origin",
             body: JSON.stringify({
                 "status": "check_user",
                 "email": document.getElementById("email-login").value,
@@ -88,7 +90,7 @@ async function check_user(event){
         });
     let data = await response.json();
     if (data["status"] =="exist_account"){
-        window.location.reload();
+        document.location.href = 'http://127.0.0.1:8000/admin-lite/profile/';
     }
     else if (data["status"] == "not_exist_account"){
             let error = document.getElementById("error-login");
@@ -99,16 +101,18 @@ async function check_user(event){
 }
 async function create_user(event){
     event.preventDefault();
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append("X-Requested-With", "XMLHttpRequest");
+    // headers.append('X-CSRFToken', getCookie("csrftoken"));
     let password_valid =  await check_match_passwords(document.getElementById("password").value,document.getElementById("repeat_password").value);
-    console.log(password_valid);
     if (password_valid == true){
             const select = document.getElementById('faculty');
             const response = await fetch("http://127.0.0.1:8000/",{
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": csrftoken
-            },
+            headers:  headers,
+            credentials: "same-origin",
             body: JSON.stringify({
                 "status": "create_user",
                 "faculty": select.options[select.selectedIndex].text,
@@ -120,7 +124,7 @@ async function create_user(event){
         });
         let data = await response.json();
         if (data["status"] =="created account"){
-            window.location.reload();
+            document.location.href = 'http://127.0.0.1:8000/admin-lite/profile/';
         } 
         else if(data["status"] =="exist_account"){
             let error = document.getElementById("error");
