@@ -88,16 +88,15 @@ aside p:hover {
 }
 
 /* Стили для таблицы */
-.applied-table-container {
+.table-container {
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
     background-color: #FFF;
     border-radius: 8px;
-    padding: 20px;
+    padding: 40px;
     width: 800px;
     margin-top: 130px;
-    max-height: calc(10 * 60px);
-    overflow-y: hidden;
-    overflow-x: auto;
+    max-height: calc(12 * 50px + 20px);
+    overflow-y: auto;
 }
 
 table {
@@ -105,7 +104,6 @@ table {
     border-collapse: separate;
     border-spacing: 0 10px;
 }
-
 
 thead {
     background-color: #F5F5F5;
@@ -124,7 +122,8 @@ td {
     border-top: 2px solid #007BFF;
 }
 
-.abandon-btn {
+.accept-btn,
+.decline-btn {
     background-color: #E5E5E5;
     border: none;
     border-radius: 4px;
@@ -134,6 +133,53 @@ td {
     margin-bottom: 5px;
 }
 
-.abandon-btn:hover {
+.accept-btn:hover {
     background-color: #D4D4D4;
+}
+
+.decline-btn:hover {
+    background-color: #D4D4D4;
+}
+.main-step-title-wrap{
+    color: #000;
+
+font-family: Roboto;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.main-step-title-wrap h3 {
+    margin: 0;
+    padding: 0;
+}
+.table-container{}
+.slick-prev{
+ 
+}
+.slick-next{
+    
+}
+.slick-prev:before{
+    content: '' !important;
+    height: 20px !important;
+    width: 20px !important;
+        left: -8px !important;
+    position: relative !important;
+    display: block !important;
+    background: url('/static/img/left-arrow.png') no-repeat !important;
+     background-size: cover !important;
+
+}
+
+.slick-next:before{
+    content: '' !important;
+    height: 20px !important;
+    width: 20px !important;
+    left: -14px !important;
+    position: relative !important;
+    display: block !important;
+    background: url('/static/img/right-arrow.png') no-repeat !important;
+    background-size: cover !important;
+
 }

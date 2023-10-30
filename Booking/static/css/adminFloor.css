@@ -61,8 +61,8 @@ nav li {
 
 /* Стили для бокового меню */
 aside,
-.profile-container {
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+.floor-container {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
     background-color: #FFF;
     border-radius: 8px;
     padding: 20px;
@@ -88,52 +88,83 @@ aside p:hover {
 }
 
 /* Стили для таблицы */
-.applied-table-container {
+.top-selection-text {
+    font-family: "Inter", "Roboto", sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.floor-container {
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
     background-color: #FFF;
     border-radius: 8px;
     padding: 20px;
     width: 800px;
     margin-top: 130px;
-    max-height: calc(10 * 60px);
     overflow-y: hidden;
     overflow-x: auto;
+    font-family: "Roboto", sans-serif;
 }
 
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 10px;
+.hostel-floor-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 70px;
 }
 
-
-thead {
-    background-color: #F5F5F5;
-}
-
-th {
-    font-weight: 700;
-    text-align: left;
+.floor-button {
     padding: 10px;
-    background-color: #FFF;
-}
-
-td {
-    padding: 10px;
-    background-color: #FFF;
-    border-top: 2px solid #007BFF;
-}
-
-.abandon-btn {
-    background-color: #E5E5E5;
+    background-color: #F5FAFF;
     border: none;
+    color: black;
     border-radius: 4px;
-    padding: 5px 10px;
     cursor: pointer;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    font-size: 18px;
 }
 
-.abandon-btn:hover {
+.floor-button:hover {
     background-color: #D4D4D4;
+}
+
+.room-grid {
+    display: none;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+}
+
+.room-grid button {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.room-grid button.selected {
+    background-color: #F84D4D;
+}
+
+#continue-button {
+    margin-top: 20px;
+    display: none;
+    padding: 10px 20px;
+    background-color: #F84D4D;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    opacity: 0.8;
+    font-size: 16px;
+}
+
+#continue-button:hover {
+    opacity: 1;
 }

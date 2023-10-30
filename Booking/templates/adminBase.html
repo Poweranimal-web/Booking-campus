@@ -41,7 +41,13 @@
         <aside>
             <div class="sections">
                 <a href="{% url 'profile' %}"><p>Профіль</p></a>
-                <a href="{% url 'application' %}"><p>Мої заявки</p></a>
+                {% if request.session.comendant %}
+                    <a href="{% url 'application' %}"><p>Заявки</p></a>
+                {% else %}
+                    <a href="{% url 'application' %}"><p>Мої заявки</p></a>
+                    <a href="{% url 'apply' %}"><p>Подача заявок</p></a>
+                {% endif %}
+
                 <p>Наші гуртожитки</p>
                 <p>Новини</p>
             </div>

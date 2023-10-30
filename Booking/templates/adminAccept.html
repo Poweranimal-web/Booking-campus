@@ -1,0 +1,65 @@
+{% extends 'adminBase.html' %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css\adminAccept.css' %}">
+{% endblock %}
+{% block content %}
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Заявки</th>
+                <th>Номер Заявки</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Номер телефона</th>
+                <th>Комната</th>
+                <th>Поверх</th>
+                <th>Гуртожиток №</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if applications %}
+                {% for application in applications %}
+                    <tr>
+                        <td>
+                            <button class="accept-btn" value={{application.id}}>Принять</button>
+                            <button class="decline-btn" value={{application.id}}>Отклонить</button>
+                        </td>
+                        <td>
+                            <p>{{application.number_application}}</p>
+                        </td>
+                        <td>
+                            <p>{{application.user.last_name}}</p>
+                        </td>
+                        <td>
+                            <p>{{application.user.first_name}}</p>
+                        </td>
+                        <td>
+                            <p>{{application.user.contact_number}}</p>
+                        </td>
+                        <td>
+                            <p>{{ application.room.number|cut:"<"  }}<</p>
+                        </td>
+                        <td>
+                            <p>{{ application.room.floor.number|cut:"<" }}<</p>
+                        </td>
+                        <td>
+                            <p>{{ application.room.campus|cut:"<" }}<</p>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="8">
+                        <p style="text-align: center; font-size: large;">Нема заявок</p>
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js\handle_application.js' %}"></script>
+{% endblock %}

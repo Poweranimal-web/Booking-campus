@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="{% static 'css\style.css' %}">
     <link rel="stylesheet" href="{% static 'css\normalize.css' %}">
     <link rel="stylesheet" href="{% static 'css\redModal.css' %}">
+    <link rel="stylesheet" href="{% static 'js\jquery-ui\jquery-ui.min.css' %}">
+    <link rel="stylesheet" href= "{% static 'js\jquery-ui\jquery-ui.structure.min.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href= "{% static 'js\slick\slick\slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'js\slick\slick\slick-theme.css' %}"/>
 </head>
 <body>
   {% if request.session.auth is not True %}
@@ -110,6 +113,228 @@
             </div>   
         </div>
     </header>
+    <section>
+      <div class="container">
+       <div id="tabs">
+           <h2>Наші Гуртожитки</h2>
+           <ul >
+              {% for campus in campuses %}
+
+               <li><a href="#tab-{{campus.id}}">Гуртожиток №{{campus.number}}</a></li>
+               <!-- <li><a href="#tab-2">Гуртожиток №2</a></li>
+               <li><a href="#tab-3">Гуртожиток №3</a></li>
+               <li><a href="#tab-4">Гуртожиток №4</a></li>
+               <li><a href="#tab-5">Гуртожиток №5</a></li>
+               <li><a href="#tab-6">Гуртожиток №6</a></li> -->
+              {% endfor %}
+           </ul>
+        {% for campus in campuses %}
+          <div class="tab-wrapper-main" id="tab-{{campus.id}}">
+              <div class="main-slider-wrapper">
+              <div class="main-slider-wrapper-extra">
+                  <div class="slider-main-wrapper">
+                      <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                      <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                      <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                      <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  </div>
+                    <div class="slider-main-control"> 
+                      <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                      <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                      <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                      <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  </div>
+              </div>
+                  <div class="right-info-slider-wrapper">
+                      <h3>Гуртожиток №{{campus.number}}</h3>
+                      <h5>Адрес: <strong>{{campus.address}}</strong></h5>
+                      <p>{{campus.detail_text}} </p>
+                      <div class="button-slider-wrapper">
+                          <button class="main_enterens_button-slider">Заселитися</button>
+                          <button class="main_enterens_button-slider-1">Більше інформації</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        {% endfor %}
+       <!-- <div class="tab-wrapper-main" id="tab-2">
+          <div class="main-slider-wrapper">
+           <div class="main-slider-wrapper-extra">
+              <div class="slider-main-wrapper">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+              </div>
+                 <div class="slider-main-control"> 
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+              </div>
+          </div>
+              <div class="right-info-slider-wrapper">
+                   <h3>Гуртожиток №2</h3>
+                   <h5>Адрес: <strong>Гагаріна 5б</strong></h5>
+                   <p>Lorem ipsum dolor sit amet, consectetur<br>
+                      adipiscing elit, sed do eiusmod tempor incididunt<br>
+                      ut labore et dolore magna aliqua. Ut enim<br>
+                      ad minim veniam, quis nostrud exercitation<br>
+                      ullamco laboris nisi ut aliquip ex ea<br>
+                      commodo consequat. Duis aute irure dolor<br>
+                      in reprehenderit in voluptate velit esse cillum<br>
+                      dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          </p>
+                   <div class="button-slider-wrapper">
+                       <button class="main_enterens_button-slider">Заселитися</button>
+                       <button class="main_enterens_button-slider-1">Більше інформації</button>
+                   </div>
+              </div>
+          </div>
+        </div>
+        <div class="tab-wrapper-main" id="tab-3">
+          <div class="main-slider-wrapper">
+           <div class="main-slider-wrapper-extra">
+              <div class="slider-main-wrapper">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+              </div>
+                 <div class="slider-main-control"> 
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+              </div>
+          </div>
+              <div class="right-info-slider-wrapper">
+                   <h3>Гуртожиток №3</h3>
+                   <h5>Адрес: <strong>Гагаріна 5б</strong></h5>
+                   <p>Lorem ipsum dolor sit amet, consectetur<br>
+                      adipiscing elit, sed do eiusmod tempor incididunt<br>
+                      ut labore et dolore magna aliqua. Ut enim<br>
+                      ad minim veniam, quis nostrud exercitation<br>
+                      ullamco laboris nisi ut aliquip ex ea<br>
+                      commodo consequat. Duis aute irure dolor<br>
+                      in reprehenderit in voluptate velit esse cillum<br>
+                      dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          </p>
+                   <div class="button-slider-wrapper">
+                       <button class="main_enterens_button-slider">Заселитися</button>
+                       <button class="main_enterens_button-slider-1">Більше інформації</button>
+                   </div>
+              </div>
+          </div>
+        </div>
+        <div class="tab-wrapper-main" id="tab-4">
+          <div class="main-slider-wrapper">
+           <div class="main-slider-wrapper-extra">
+              <div class="slider-main-wrapper">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+              </div>
+                 <div class="slider-main-control"> 
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                  <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+              </div>
+          </div>
+              <div class="right-info-slider-wrapper">
+                   <h3>Гуртожиток №4</h3>
+                   <h5>Адрес: <strong>Гагаріна 5б</strong></h5>
+                   <p>Lorem ipsum dolor sit amet, consectetur<br>
+                      adipiscing elit, sed do eiusmod tempor incididunt<br>
+                      ut labore et dolore magna aliqua. Ut enim<br>
+                      ad minim veniam, quis nostrud exercitation<br>
+                      ullamco laboris nisi ut aliquip ex ea<br>
+                      commodo consequat. Duis aute irure dolor<br>
+                      in reprehenderit in voluptate velit esse cillum<br>
+                      dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          </p>
+                   <div class="button-slider-wrapper">
+                       <button class="main_enterens_button-slider">Заселитися</button>
+                       <button class="main_enterens_button-slider-1">Більше інформації</button>
+                   </div>
+              </div>
+          </div>
+        </div>
+        <div class="tab-wrapper-main" id="tab-5">
+            <div class="main-slider-wrapper">
+            <div class="main-slider-wrapper-extra">
+                <div class="slider-main-wrapper">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                </div>
+                  <div class="slider-main-control"> 
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                </div>
+            </div>
+                <div class="right-info-slider-wrapper">
+                    <h3>Гуртожиток №5</h3>
+                    <h5>Адрес: <strong>Гагаріна 5б</strong></h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur<br>
+                        adipiscing elit, sed do eiusmod tempor incididunt<br>
+                        ut labore et dolore magna aliqua. Ut enim<br>
+                        ad minim veniam, quis nostrud exercitation<br>
+                        ullamco laboris nisi ut aliquip ex ea<br>
+                        commodo consequat. Duis aute irure dolor<br>
+                        in reprehenderit in voluptate velit esse cillum<br>
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            </p>
+                    <div class="button-slider-wrapper">
+                        <button class="main_enterens_button-slider">Заселитися</button>
+                        <button class="main_enterens_button-slider-1">Більше інформації</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="tab-wrapper-main" id="tab-6">
+            <div class="main-slider-wrapper">
+            <div class="main-slider-wrapper-extra">
+                <div class="slider-main-wrapper">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                </div>
+                  <div class="slider-main-control"> 
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                </div>
+            </div>
+                <div class="right-info-slider-wrapper">
+                    <h3>Гуртожиток №6</h3>
+                    <h5>Адрес: <strong>Гагаріна 5б</strong></h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur<br>
+                        adipiscing elit, sed do eiusmod tempor incididunt<br>
+                        ut labore et dolore magna aliqua. Ut enim<br>
+                        ad minim veniam, quis nostrud exercitation<br>
+                        ullamco laboris nisi ut aliquip ex ea<br>
+                        commodo consequat. Duis aute irure dolor<br>
+                        in reprehenderit in voluptate velit esse cillum<br>
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            </p>
+                    <div class="button-slider-wrapper">
+                        <button class="main_enterens_button-slider">Заселитися</button>
+                        <button class="main_enterens_button-slider-1">Більше інформації</button>
+                    </div>
+                </div>
+            </div>
+          </div> -->
+          </div>
+       </div>
+   </section>
     <footer>
       <div class="container">
           <div class="contact-data">
@@ -133,9 +358,33 @@
           </div>
       </div>
     </footer>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script type="text/javascript" src="{% static 'js\jquery.js' %}"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+    <script type="text/javascript" src="{% static 'js\slick\slick\slick.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js\jquery-ui\jquery-ui.min.js' %}"></script> 
+    <script>
+          $('.slider-main-wrapper').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  });
+          $('.slider-main-control').slick({
+              slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+    vertical: false,
+    dots: true,
+    infinite: false,
+    asNavFor: '.slider-main-wrapper',
+    focusOnSelect: true,
+    centerMode: true,
+    variableWidth: true
+          });
+        $('#tabs').tabs();
+    </script>
     <script src="{% static 'js\main.js' %}"></script>
 </body>
 </html>

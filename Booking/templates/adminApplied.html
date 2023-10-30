@@ -20,34 +20,44 @@
                         </tr>
                     </thead>
                     <tbody class="table-body">
-                        {% for application in applications%}
+                        {% if applications %}
+                            {% for application in applications%}
+                                <tr>
+                                    <td>
+                                        <p>{{application.number_application}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{application.status}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{application.date_create_application|date:"d.m.Y" }}</p>
+                                    </td>
+                                    <td>
+                                        <p>>{{application.date_handle_application|date:"d.m.Y"}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{application.room.number}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{application.room.campus.number}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{application.room.floor.number}}</p>
+                                    </td>
+                                    <td>
+                                        <button class="abandon-btn" value={{application.id}}>Відмінити</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
                             <tr>
-                                <td>
-                                    <p>{{application.number_application}}</p>
-                                </td>
-                                <td>
-                                    <p>{{application.status}}</p>
-                                </td>
-                                <td>
-                                    <p>{{application.date_create_application|date:"d.m.Y" }}</p>
-                                </td>
-                                <td>
-                                    <p>>{{application.date_handle_application|date:"d.m.Y"}}</p>
-                                </td>
-                                <td>
-                                    <p>{{application.room.number}}</p>
-                                </td>
-                                <td>
-                                    <p>{{application.room.campus.number}}</p>
-                                </td>
-                                <td>
-                                    <p>{{application.room.floor.number}}</p>
-                                </td>
-                                <td>
-                                    <button class="abandon-btn" value={{application.id}}>Відмінити</button>
+                                <td colspan="7">
+                                    <p style="text-align: center; font-size: large;">Нема заявок</p>
                                 </td>
                             </tr>
-                        {% endfor %}
+                        
+                        
+                        {% endif %}
                         <!-- <tr>
                             <td>
                                 <p>1488</p>

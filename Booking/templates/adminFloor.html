@@ -1,0 +1,51 @@
+{% extends 'adminBase.html' %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css\adminFloor.css' %}">
+{% endblock %}
+{% block content %}
+        <div class="floor-container">
+            <div class="top-selection-text">
+                <p>3/3 Оберіть поверх та кімнату</p>
+            </div>
+                <div class="hostel-floor-selector">
+                    {% for floor in floors %}
+                        <button class="floor-button" data-floor="{{floor.number}}">Поверх {{floor.number}}</button>
+                    {% endfor %}
+
+                    <!-- <button class="floor-button" data-floor="2">Поверх 2</button>
+                    <button class="floor-button" data-floor="3">Поверх 3</button>
+                    <button class="floor-button" data-floor="4">Поверх 4</button>
+                    <button class="floor-button" data-floor="5">Поверх 5</button>
+                    <button class="floor-button" data-floor="6">Поверх 6</button> -->
+                </div>
+                {% for floor in floors %}
+                        <div class="room-grid" data-floor-grid="{{floor.number}}">
+                            <!-- Здесь будут кнопки комнат для первого этажа -->
+                        </div>
+                {% endfor %}
+                <!-- <div class="room-grid" data-floor-grid="1">
+                    
+                </div>
+                <div class="room-grid" data-floor-grid="2">
+
+                </div>
+                <div class="room-grid" data-floor-grid="3">
+                
+                </div>
+                <div class="room-grid" data-floor-grid="4">
+                
+                </div>
+                <div class="room-grid" data-floor-grid="5">
+                
+                </div>
+                <div class="room-grid" data-floor-grid="6">
+
+                </div> -->
+                <span id="error" style="display: none; color: red; margin-top: 20px;"></span>
+                <button id="continue-button">Продовжити</button>
+        </div>
+{% endblock %}
+{% block js %}
+        <script src="{% static 'js\adminFloor.js' %}"></script>
+{% endblock %}

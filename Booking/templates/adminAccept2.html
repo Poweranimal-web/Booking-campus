@@ -1,0 +1,78 @@
+{% extends 'adminBase.html' %}
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css\adminCampus.css' %}">
+    <link rel="stylesheet" href="{% static 'js\jquery-ui\jquery-ui.min.css' %}">
+    <link rel="stylesheet" href= "{% static 'js\jquery-ui\jquery-ui.structure.min.css' %}">
+    <link rel="stylesheet" type="text/css" href= "{% static 'js\slick\slick\slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'js\slick\slick\slick-theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css\styleses.css' %}">
+{% endblock %}
+{% block content %}
+            <div class="table-container">
+                <div class="main-step-title-wrap">
+                   <h3>2/3 Гуртожиток ФІТ</h3> 
+                </div>
+                <div class="big-slider-main">
+                    {% for campus in campuses %}
+                        <div class="slider-main-child">
+                        <div class="main-slider-wrapper">
+                            
+                            <div class="main-slider-wrapper-extra">
+                            <div class="slider-main-wrapper">
+                                <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                                <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                                <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                                <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                            </div>
+                                
+                        </div>
+                            <div class="right-info-slider-wrapper">
+                                    <h3>Гуртожиток {{campus.number}}</h3>
+                                    <h5>Адрес: <strong>{{campus.address}}</strong></h5>
+                                    <p>{{campus.detail_text}}</p>
+                                    <div class="button-slider-wrapper">
+                                        <a href="{% url 'floor' pk=campus.id %}"><button class="main_enterens_button-slider">Заселитися</button></a>
+                                        <button class="main_enterens_button-slider-1">Більше інформації</button>
+                                    </div>
+                            </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+                </div>
+          </div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="{% static 'js\jquery2.js' %}"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<script type="text/javascript" src="{% static 'js\slick\slick\slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js\jquery-ui\jquery-ui.min.js' %}"></script> 
+    <script>
+        $('.slider-main-wrapper').slick({
+  dots: false,
+  infinite: true,
+    arrows: false,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1
+});
+        $('.slider-main-control').slick({
+            slidesToShow: 3,
+  slidesToScroll: 1,
+  arrows: false,
+  vertical: false,
+  infinite: false,
+  asNavFor: '.slider-main-wrapper',
+  focusOnSelect: true,
+  centerMode: true,
+  variableWidth: true
+        });
+        $('.big-slider-main').slick({
+            slidesToShow: 1,
+  slidesToScroll: 1,
+  swipe: false,
+  arrows:true
+        });
+       $('#tabs').tabs();
+    </script>
+{% endblock %}

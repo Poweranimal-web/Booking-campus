@@ -61,11 +61,10 @@ nav li {
 
 /* Стили для бокового меню */
 aside,
-.profile-container {
+.application-container {
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
     background-color: #FFF;
     border-radius: 8px;
-    padding: 20px;
 }
 
 aside {
@@ -87,53 +86,58 @@ aside p:hover {
     background-color: #f0f0f0;
 }
 
-/* Стили для таблицы */
-.applied-table-container {
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
-    background-color: #FFF;
-    border-radius: 8px;
-    padding: 20px;
+/* Стили для профиля */
+.application-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     width: 800px;
     margin-top: 130px;
-    max-height: calc(10 * 60px);
-    overflow-y: hidden;
-    overflow-x: auto;
+    font-family: "Roboto", sans-serif;
 }
 
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-}
-
-
-thead {
-    background-color: #F5F5F5;
-}
-
-th {
-    font-weight: 700;
-    text-align: left;
-    padding: 10px;
+/* Стили для новой структуры на основе вашего скриншота */
+.status-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
     background-color: #FFF;
+    padding-left: 50px;
+    padding-top: 40px;
 }
 
-td {
-    padding: 10px;
-    background-color: #FFF;
-    border-top: 2px solid #007BFF;
+.status-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 20px;
+
 }
 
-.abandon-btn {
-    background-color: #E5E5E5;
+.status-description {
+    font-size: 18px;
+}
+
+.status-button {
+    align-self: flex-start;
+    background-color: #F84D4D;
+    color: white;
     border: none;
     border-radius: 4px;
-    padding: 5px 10px;
+    padding: 8px 20px;
     cursor: pointer;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    height: 40px;
+    width: 200px;
+    font-size: 16px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    font-weight: 700;
 }
 
-.abandon-btn:hover {
-    background-color: #D4D4D4;
+.status-button:hover {
+    background-color: green;
 }
