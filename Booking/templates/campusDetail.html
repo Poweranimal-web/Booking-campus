@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css\mainDetail.css' %}">
+    <link rel="stylesheet" href="{% static 'js\jquery-ui\jquery-ui.min.css' %}">
+    <link rel="stylesheet" href= "{% static 'js\jquery-ui\jquery-ui.structure.min.css' %}">
+    <link rel="stylesheet" type="text/css" href= "{% static 'js\slick\slick\slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'js\slick\slick\slick-theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css\detail.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <header id="admin-header">
+
+        <div class="logo">
+            <a href="{% url 'main' %}">
+                <img src="{% static 'img\Лого_англ_гориз_кольор.png' %}" alt="logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'campus' %}" >Обрати гуртожиток</a></li>
+                <li><a href="{% url 'profile' %}" >Особистий кабінет</a></li>
+                    <select id="language" style=''>
+                        <option value="ua">UA</option>
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                    </select>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrap-body">
+        <main>
+            <div class="table-container">
+                <h2>Гуртожиток №{{campus.number}}</h2> 
+                   <div class="slider-main-child">
+        <div class="main-slider-wrapper">
+             <div class="left-content">
+                   
+                   <h5><strong> Адреса:</strong> {{campus.address}}</h5>
+                   <h5><strong> Тел.</strong> {{campus.contact_number}}</h5>
+                   <h5><strong> Завідуючий:</strong> {{campus.head}}</h5>
+                   <h5><strong>Ціна:</strong> {{campus.price}}</h5>
+                   <p>{{campus.detail_text}}</p>
+                     <strong style='display: block; padding-bottom: 1.67em;'>Кількість поверхів – {{campus.floors}}</strong>
+                     <strong style='display: block; padding-bottom: 1.67em;'> Тип гуртожитку – коридорний</strong>
+                     <strong style='display: block;  color: #EB4040;'>Доступ до мережі інтернет</strong>
+                     </div>
+                </div>
+            <div class="main-slider-wrapper-extra">
+               <div class="slider-main-wrapper">
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                   <img src="{% static 'img\main_campus.png' %}"alt="main campus">
+               </div>
+                  <div class="slider-main-control"> 
+                    <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+                   <img src="{% static 'img\main_campus.png' %}" alt="main campus">
+               </div>
+           </div>
+             
+           </div>
+            </div>
+            </div>
+    </main>
+</body>
+<script type="text/javascript" src="{% static 'js\detail.js' %}"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<script type="text/javascript" src="{% static 'js\slick\slick\slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js\jquery-ui\jquery-ui.min.js' %}"></script> 
+    <script>
+        $('.slider-main-wrapper').slick({
+  infinite: true,
+    arrows: false,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1
+});
+        $('.slider-main-control').slick({
+            slidesToShow: 3,
+  slidesToScroll: 1,
+  arrows: false,
+  vertical: false,
+  infinite: false,
+  asNavFor: '.slider-main-wrapper',
+  focusOnSelect: true,
+  centerMode: true,
+  variableWidth: true
+        });
+        $('.big-slider-main').slick({
+            slidesToShow: 1,
+  slidesToScroll: 1,
+  swipe: false,
+  arrows:true
+        });
+       $('#tabs').tabs();
+    </script>
+</html>
+<!--
+=

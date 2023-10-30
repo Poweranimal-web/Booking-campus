@@ -44,9 +44,11 @@
                                     <td>
                                         <p>{{application.room.floor.number}}</p>
                                     </td>
-                                    <td>
-                                        <button class="abandon-btn" value={{application.id}}>Відмінити</button>
-                                    </td>
+                                    {% if application.status == "На розгляді" %}
+                                        <td>
+                                            <button class="abandon-btn" value={{application.id}}>Відмінити</button>
+                                        </td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                         {% else %}

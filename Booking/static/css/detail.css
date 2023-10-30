@@ -1,0 +1,364 @@
+body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5;
+}
+
+header,
+aside,
+main {
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.wrap-body {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Стили для хедера */
+#admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 180px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav li {
+    margin: 0;
+}
+
+#language {
+    margin-left: 20px;
+    background-color: #FFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-family: "Inter", "Roboto", sans-serif;
+}
+
+
+ul li:first-child{
+    padding-left: 0px;
+}
+ul li a{
+    
+}
+
+/* ul li select{
+    font-size: 32px;    
+    border: none;
+    background-color: transparent;
+    outline: none; 
+    font-family: 'Gilroy', sans-serif;
+}
+
+ul li select option{
+    font-family: 'Gilroy', sans-serif;
+        font-size: 32px;
+    border-color: none;
+    outline: none;
+    
+} */
+
+.menu_main_wraper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.title_main{
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 74px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin: 0;
+}
+.main_title_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+.main_title_left p{
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+.main_enterens_button{
+    border-radius: 100px;
+    background: #F84D4D;
+    color: #FFF;
+    font-family: 'Gilroy';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 21px 106px;
+}
+
+.main_info_bootom_ultra_wrapper_ultimate_edition_extra_spasce_x_development_tochka_net_sobachka_tochka_com{
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main_contact_info_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main_info_bottom:first-child {
+    padding-right: 50px;
+}
+.main_info_bottom{
+    display: flex;
+}
+.main_info_bottom span{
+    display: block;
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-left: 14px;
+}
+.working_hours{
+    color: #FFF;
+    font-family: 'Roboto';
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding-left: 90px
+}
+
+
+
+
+.main-slider-wrapper{
+
+}
+
+.right-info-slider-wrapper{
+    margin-left: 60px;
+}
+.right-info-slider-wrapper h3{
+color: #000;
+margin-top: 0;
+font-family: Roboto;
+font-size: 48px;
+font-style: normal;
+font-weight: 900;
+margin-bottom:14px;
+line-height: normal;
+}
+.right-info-slider-wrapper h5{
+     color: #000;
+    padding: 0;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    margin-bottom: 14px;
+    margin-top: 0px;
+    line-height: normal;
+}
+.right-info-slider-wrapper h5 strong{
+color: #000;
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.right-info-slider-wrapper p{
+    color: #000;
+    margin-top: 0;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    margin-bottom: 30px;
+    line-height: normal;
+}
+.slick-track img {
+    
+}
+.slider-main-wrapper{
+   
+
+}
+
+.main_enterens_button-slider{
+    border-radius: 100px;
+    background: #F84D4D;
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    padding: 5px 24px 5px 24px;
+    border: none;
+}
+.main_enterens_button-slider-1{
+    border-radius: 100px;
+    border: 1px solid !important;
+    color: #000;
+    background: transparent;
+    font-family: Roboto;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 600;
+    padding: 10px 34px 10px 26px;
+    border: none;
+    margin-left: 20px;
+}
+
+.main-slider-wrapper-extra{
+    width: 40%;
+}
+
+img {
+  max-width: 100%;
+}
+
+.slider-main-control .slick-slide {
+  width: 100px;
+  height: 150xp;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+
+.slider-main-control .slick-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+  display: block;
+}
+
+.slider-main-control .slick-slide.slick-current {
+  border-color: skyblue;
+}
+.slick-slider {
+touch-action: auto;
+-ms-touch-action: auto;
+}
+
+.slider-main-control .slick-list .slick-track{
+    transform: translate3d(0px, 0px, 0px) !important;
+}
+
+.slider-main-control .slick-list{
+    padding: 0 !important;
+}
+
+.slick-dots li.slick-active button:before{
+    color: #F84D4D !important;
+}
+
+.slick-dots li button:before{
+        font-size: 10px !important;
+        color: #D9D9D9 !important;
+        opacity: 1 !important;
+}
+
+
+#tabs ul li a{
+color: #000; 
+
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 900;
+line-height: normal;
+}
+
+
+#tabs ul {
+display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 800px;
+    padding-bottom: 32px;
+}
+.ui-tabs-active{
+    border-radius: 15px;
+background: #F84D4D !important;
+
+}
+.ui-tabs-active a{
+color: #fff !important;
+
+}
+
+.ui-state-default{
+border-radius: 15px;
+background: #F5FAFF;
+}
+
+.ui-tabs .ui-tabs-nav li{
+    margin: 1px 0.2em 20px 20px !important;
+}
+h2{
+color: #000;
+    text-align: center;
+    font-family: Roboto;
+    margin: 0;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+.slick-dots{
+    position: static !important;
+    padding-top:20px !important;
+}
+.ui-tabs-panel{
+    
+}
+.button-slider-wrapper{
+    display: flex;
+}
+.main-step-title-wrap  {
+    display: flex;
+}
+.main-step-title-wrap{
+     display: flex;
+}
+.slider-main-child{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

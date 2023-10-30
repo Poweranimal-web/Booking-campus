@@ -46,15 +46,25 @@ class MainPage(View):
         return JsonResponse(data)
 class ApplicationsPage(View):
     def get(self, request):
-        if request.session["comendant"]:
-            applications = Application.objects.filter(status="На розгляді")
-            return render(request, "adminAccept.html", locals())
-        else:
-            applications = Application.objects.filter(user__email=request.session["email"])
-            return render(request, "adminApplied.html", locals())
+        try:
+            if request.session["auth"]:
+                if request.session["comendant"]:
+                    applications = Application.objects.filter(status="На розгляді")
+                    return render(request, "adminAccept.html", locals())
+                else:
+                    applications = Application.objects.filter(user__email=request.session["email"])
+                    return render(request, "adminApplied.html", locals())
+            else:
+                return redirect(reverse("main"))
+        except KeyError:
+            return redirect(reverse("main"))
     def post(self, request):
         data = json.loads(request.body)
         if data["status"] == "delete application":
+            app = Application.objects.filter(id=data["id"]).values()[0]
+            room = Room.objects.get(id=app["room_id"])
+            room.taken_beds = room.taken_beds - 1
+            room.save()
             Application.objects.filter(id=data["id"]).delete()
             return JsonResponse({"status":"deleted"})
         elif data["status"] == "accept application":
@@ -64,17 +74,29 @@ class ApplicationsPage(View):
             app = Application.objects.filter(id=data["id"]).values()[0]
             Application.objects.filter(id=data["id"]).update(status="Відмовлено")
             room = Room.objects.get(id=app["room_id"])
-            room.taken_beds = room.taken_beds-1
+            room.taken_beds = room.taken_beds - 1
             room.save()
             return JsonResponse({"status": "declined"})
 class ApplyPage(View):
     def get(self, request):
-        return render(request, "adminApply.html", locals())
+        try:
+            if request.session["auth"]:
+                return render(request, "adminApply.html", locals())
+            else:
+                return redirect(reverse("main"))
+        except KeyError:
+            return redirect(reverse("main"))
 class ApplyFloorPage(View):
     def get(self, request,pk):
-        campus = Campus.objects.get(id=pk)
-        floors = Floor.objects.filter(campus=campus)
-        return render(request, "adminFloor.html", locals())
+        try:
+            if request.session["auth"]:
+                campus = Campus.objects.get(id=pk)
+                floors = Floor.objects.filter(campus=campus)
+                return render(request, "adminFloor.html", locals())
+            else:
+                return redirect(reverse("main"))
+        except KeyError:
+            return redirect(reverse("main"))
     def post(self, request, pk):
         data = json.loads(request.body)
         if data["status"] == "get_rooms":
@@ -88,7 +110,16 @@ class ApplyFloorPage(View):
             applications = Application.objects.filter(user__email=request.session["email"])
             exist_room_app = Application.objects.filter(room=room,user=user).exists()
             if exist_room_app:
-                return JsonResponse({"status": "not saved request", "error": "Ви вже надсилали запит на цю кімнату"})
+                room_app = Application.objects.get(room=room, user=user)
+                if room_app.status == "Відмовлено":
+                    room_app.status = "На розгляді"
+                    room.taken_beds = room.taken_beds + 1
+                    room_app.save()
+                    room.save()
+                    return JsonResponse({"status": "saved request"})
+                if room_app.status == "На розгляді" or room_app.status == "Прийнято":
+                    return JsonResponse({"status": "not saved request", "error": "Ви вже надсилали запит на цю кімнату"})
+
             else:
                 if len(applications) >= 5:
                     return JsonResponse({"status": "not saved request", "error": "Ліміт запитів перевищує необхідний"})
@@ -103,10 +134,16 @@ class ApplyFloorPage(View):
                         return JsonResponse({"status": "not saved request","error":"Потрібен контактний номер"})
 class ListCampusPage(View):
     def get(self, request):
-        user = User.objects.filter(email=request.session["email"]).values()[0]
-        faculty = Faculty.objects.get(id=user["faculty_id"])
-        campuses = Campus.objects.filter(faculty=faculty)
-        return render(request,"adminAccept2.html", locals())
+        try:
+            if request.session["auth"]:
+                user = User.objects.filter(email=request.session["email"]).values()[0]
+                faculty = Faculty.objects.get(id=user["faculty_id"])
+                campuses = Campus.objects.filter(faculty=faculty)
+                return render(request,"adminAccept2.html", locals())
+            else:
+                return redirect(reverse("main"))
+        except KeyError:
+            return redirect(reverse("main"))
 class ProfilePage(View):
     def get(self, request):
         try:
@@ -152,6 +189,10 @@ class Logout(View):
         del request.session["email"]
         del request.session["comendant"]
         return redirect(reverse('main'))
+class DetailPage(View):
+    def get(self,request,pk):
+        campus = Campus.objects.get(id=pk)
+        return render(request, "campusDetail.html",locals())
 class GenData(View):
     def get(self,request):
         campuses = Campus.objects.all().values()

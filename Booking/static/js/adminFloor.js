@@ -64,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
           
         });
         let data = await response.json();
-        console.log(data);
         if (data["status"] == "not saved request"){
             let error = document.getElementById("error");
             error.textContent = data["error"];
             error.style.display = "block";
             continueButton.removeEventListener("click",click);
+            selectedRoom.click();
         }
         else if (data["status"] == "saved request"){
            window.location.href = "http://127.0.0.1:8000/admin-lite/applications/";

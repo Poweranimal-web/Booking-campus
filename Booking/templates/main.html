@@ -61,9 +61,11 @@
                 <div class="logo"><img src="{% static 'img\logo.png' %}" alt="logo"></div>
                 <div class="menu_wraper">
                     <ul>
-                        <li><a href="#">Заселитися </a></li>
-                        <li><a href="#">Наші гуртожитки</a></li>
-                        <li><a href="#">Увійти до кабінету </a></li>
+                        {% if request.session.auth %}
+                            <li><a href="{% url 'apply' %}">Заселитися </a></li>
+                            <li><a href="{% url 'profile' %}">Увійти до кабінету </a></li>
+                        {% endif %}
+                        <li><a href="#campuses">Наші гуртожитки</a></li>
                         {% if request.session.auth %}
                             <li><a href="{% url 'logout' %}">Вийти</a></li>
                         {% endif %}
@@ -107,7 +109,7 @@
                     </div>
                 </div> 
                 <div class="social_media_wrapper">
-                    <img id="telegram" src="{% static 'img\telegram.png' %}" alt="telegram">
+                    <a href="https://t.me/dniprotech"><img id="telegram" src="{% static 'img\telegram.png' %}" alt="telegram"></a>
                     <img src="{% static 'img\viber.png' %}" alt="viber">
                 </div>
             </div>   
@@ -116,7 +118,7 @@
     <section>
       <div class="container">
        <div id="tabs">
-           <h2>Наші Гуртожитки</h2>
+           <h2 name="campuses">Наші Гуртожитки</h2>
            <ul >
               {% for campus in campuses %}
 
@@ -151,7 +153,7 @@
                       <p>{{campus.detail_text}} </p>
                       <div class="button-slider-wrapper">
                           <button class="main_enterens_button-slider">Заселитися</button>
-                          <button class="main_enterens_button-slider-1">Більше інформації</button>
+                          <a href="{% url 'detail' pk=campus.id %}"><button class="main_enterens_button-slider-1">Більше інформації</button></a>
                       </div>
                   </div>
               </div>

@@ -1,0 +1,205 @@
+/* Общие стили */
+body {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5;
+}
+
+header,
+aside,
+main {
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #000  ;
+}
+
+.wrap-body {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Стили для хедера */
+#admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 180px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav li {
+    margin: 0;
+}
+
+#language {
+  
+}
+
+/* Стили для бокового меню */
+aside,
+.profile-container {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 150px;
+    margin-right: 20px;
+    margin-top: 150px;
+}
+
+aside p {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+aside p:hover {
+    background-color: #f0f0f0;
+}
+
+/* Стили для таблицы */
+.table-container {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 40px;
+    width: 1620px;
+    margin-top: 130px;
+    height: 100%;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+thead {
+    background-color: #F5F5F5;
+}
+
+th {
+    font-weight: 700;
+    text-align: left;
+    padding: 10px;
+    background-color: #FFF;
+}
+
+td {
+    padding: 10px;
+    background-color: #FFF;
+    border-top: 2px solid #007BFF;
+}
+
+.accept-btn,
+.decline-btn {
+    background-color: #E5E5E5;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.accept-btn:hover {
+    background-color: #D4D4D4;
+}
+
+.decline-btn:hover {
+    background-color: #D4D4D4;
+}
+.main-step-title-wrap{
+    color: #000;
+
+font-family: Roboto;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.main-step-title-wrap h3 {
+    margin: 0;
+    padding: 0;
+}
+.table-container{}
+.slick-prev{
+ 
+}
+.slick-next{
+    
+}
+.slick-prev:before{
+    content: '' !important;
+    height: 20px !important;
+    width: 20px !important;
+        left: -8px !important;
+    position: relative !important;
+    display: block !important;
+    background: url('./img/left-arrow.png') no-repeat !important;
+     background-size: cover !important;
+
+}
+
+.slick-next:before{
+    content: '' !important;
+    height: 20px !important;
+    width: 20px !important;
+    left: -14px !important;
+    position: relative !important;
+    display: block !important;
+    background: url('./img/right-arrow.png') no-repeat !important;
+    background-size: cover !important;
+
+}
+.left-content h5{
+color: #000;
+font-family: Roboto;
+font-size: 32px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.left-content p{
+color: #000;
+
+font-family: Roboto;
+font-size: 32px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+.left-content strong{
+color: #000;
+
+font-family: Roboto;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
