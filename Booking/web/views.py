@@ -10,7 +10,7 @@ import random
 class MainPage(View):
     def get(self,request):
         faculties = Faculty.objects.all()
-        campuses = Campus.objects.all()
+        campuses = Campus.objects.all().order_by('id')
         return render(request,"main.html", locals())
     def post(self, request):
         data = json.loads(request.body)
@@ -80,7 +80,7 @@ class ApplicationsPage(View):
 class ApplyPage(View):
     def get(self, request):
         try:
-            if request.session["auth"]:
+            if request.session["auth"] and request.session["comendant"]==False:
                 return render(request, "adminApply.html", locals())
             else:
                 return redirect(reverse("main"))
@@ -89,7 +89,7 @@ class ApplyPage(View):
 class ApplyFloorPage(View):
     def get(self, request,pk):
         try:
-            if request.session["auth"]:
+            if request.session["auth"] and request.session["comendant"]==False:
                 campus = Campus.objects.get(id=pk)
                 floors = Floor.objects.filter(campus=campus)
                 return render(request, "adminFloor.html", locals())
@@ -135,7 +135,7 @@ class ApplyFloorPage(View):
 class ListCampusPage(View):
     def get(self, request):
         try:
-            if request.session["auth"]:
+            if request.session["auth"] and request.session["comendant"]==False:
                 user = User.objects.filter(email=request.session["email"]).values()[0]
                 faculty = Faculty.objects.get(id=user["faculty_id"])
                 campuses = Campus.objects.filter(faculty=faculty)

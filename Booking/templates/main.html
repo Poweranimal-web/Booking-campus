@@ -62,19 +62,23 @@
                 <div class="menu_wraper">
                     <ul>
                         {% if request.session.auth %}
-                            <li><a href="{% url 'apply' %}">Заселитися </a></li>
+                            {% if request.session.comendant %}
+                                <li><a href="{% url 'apply' %}" style="display:none">Заселитися</a></li>
+                            {% else %}
+                                <li><a href="{% url 'apply' %}">Заселитися</a></li>
+                            {% endif %}
                             <li><a href="{% url 'profile' %}">Увійти до кабінету </a></li>
                         {% endif %}
-                        <li><a href="#campuses">Наші гуртожитки</a></li>
+                        <li><a href="#tabs">Наші гуртожитки</a></li>
                         {% if request.session.auth %}
                             <li><a href="{% url 'logout' %}">Вийти</a></li>
                         {% endif %}
                         <li>
-                            <select id="language">
+                            <!-- <select id="language">
                                 <option value="ua">UA</option>
                                 <option value="en">EN</option>
                                 <option value="ru">RU</option>
-                            </select>
+                            </select> -->
                         </li>
                     </ul>
                 </div>
@@ -118,7 +122,7 @@
     <section>
       <div class="container">
        <div id="tabs">
-           <h2 name="campuses">Наші Гуртожитки</h2>
+           <h2>Наші Гуртожитки</h2>
            <ul >
               {% for campus in campuses %}
 

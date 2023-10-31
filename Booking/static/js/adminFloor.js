@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const floorButtons = document.querySelectorAll(".floor-button");
   const roomGrids = document.querySelectorAll(".room-grid");
   const continueButton = document.getElementById("continue-button");
+  continueButton.addEventListener("click",click);
   floorButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const selectedFloor = this.dataset.floor;
@@ -35,52 +36,57 @@ document.addEventListener("DOMContentLoaded", function () {
       if (previouslySelected) {
         previouslySelected.classList.remove("selected");
       }
-      continueButton.style.display = "none";
+      // continueButton.style.display = "none";
     });
   });
 
   roomGrids.forEach((grid) => {
-    grid.addEventListener("click", function (event) {
+    grid.addEventListener("click", function dm(event) {
+      event.preventDefault();
       if (event.target.tagName === "BUTTON") {
         const selectedRoom = event.target;
         const id_room = event.target.value;
         const otherRooms = this.querySelectorAll("button");
 
-        otherRooms.forEach((room) => room.classList.remove("selected"));
+        otherRooms.forEach((room) =>{
+          room.classList.remove("selected");
+        });
 
         selectedRoom.classList.add("selected");
         continueButton.style.display = "block";
-        continueButton.addEventListener("click", async function click() {
-          let headers = new Headers();
-          headers.append('Content-Type', 'application/json');
-          headers.append('Accept', 'application/json');  
-          const response = await fetch(url,{
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({
-              "status": "send_request",
-              "id_room": id_room
-          })
-          
-        });
-        let data = await response.json();
-        if (data["status"] == "not saved request"){
-            let error = document.getElementById("error");
-            error.textContent = data["error"];
-            error.style.display = "block";
-            continueButton.removeEventListener("click",click);
-            selectedRoom.click();
-        }
-        else if (data["status"] == "saved request"){
-           window.location.href = "http://127.0.0.1:8000/admin-lite/applications/";
-
-        }
-      });
+        continueButton.value = id_room;
         
       }
     });
   });
 
+  async function click(event) {
+    event.preventDefault();
+    const id_room = event.target.value;
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');  
+    const response = await fetch(url,{
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        "status": "send_request",
+        "id_room": id_room
+    })
+    
+  });
+  let data = await response.json();
+  if (data["status"] == "not saved request"){
+      let error = document.getElementById("error");
+      error.textContent = data["error"];
+      error.style.display = "block";
+
+  }
+  else if (data["status"] == "saved request"){
+     window.location.href = "http://127.0.0.1:8000/admin-lite/applications/";
+
+  }
+}
   // Генерация комнат для каждого этажа
   // const numberOfRoomsPerFloor = 20;
   // roomGrids.forEach((grid, index) => {

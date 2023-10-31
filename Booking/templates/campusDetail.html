@@ -28,13 +28,12 @@
         </div>
         <nav>
             <ul>
-                <li><a href="{% url 'campus' %}" >Обрати гуртожиток</a></li>
+                {% if request.session.comendant %}
+                    <li><a href="{% url 'campus' %}" style="display:none">Обрати гуртожиток</a></li>
+                {% else %}
+                    <li><a href="{% url 'campus' %}" >Обрати гуртожиток</a></li>
+                {% endif %}
                 <li><a href="{% url 'profile' %}" >Особистий кабінет</a></li>
-                    <select id="language" style=''>
-                        <option value="ua">UA</option>
-                        <option value="en">EN</option>
-                        <option value="ru">RU</option>
-                    </select>
             </ul>
         </nav>
     </header>

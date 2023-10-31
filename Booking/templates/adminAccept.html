@@ -4,6 +4,21 @@
 <link rel="stylesheet" href="{% static 'css\adminAccept.css' %}">
 {% endblock %}
 {% block content %}
+<form class="filter">
+        <label class="container">На розгляді
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Відмволено
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">На розгляді
+            <input type="checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <button type="submit">Знайти</button>
+</form>
 <div class="table-container">
     <table>
         <thead>
