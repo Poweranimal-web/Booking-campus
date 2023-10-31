@@ -46,28 +46,28 @@ class MainPage(View):
         return JsonResponse(data)
 class ApplicationsPage(View):
     def get(self, request):
-        try:
-            if request.session["auth"]:
+        if request.session["auth"]:
                 if request.session["comendant"]:
                         data = request.GET.dict()
-                        # status = {"in_proceed": in_proceed,"canceled":canceled,"accepted":accepted}
-                        # applications = Application.objects.filter(status="На розгляді")
-                        if data["status"] == "canceled":
-                                    print("jdsjkds")
-                                    applications = Application.objects.filter(status="Відмовлено")
-                        elif data["status"] == "in proceed":
-                                    print("вава")
-                                    applications = Application.objects.filter(status="На розгляді")
-                        elif data["status"]  == "accepted":
-                                    print("sdssd")
-                                    applications = Application.objects.filter(status="Прийнято")
+                        applications = Application.objects.filter(status="На розгляді")
+                        try:
+                            if data["status"] == "canceled":
+                                        print("jdsjkds")
+                                        applications = Application.objects.filter(status="Відмовлено")
+                            elif data["status"] == "in proceed":
+                                        print("вава")
+                                        applications = Application.objects.filter(status="На розгляді")
+                            elif data["status"]  == "accepted":
+                                        print("sdssd")
+                                        applications = Application.objects.filter(status="Прийнято")
+                        except KeyError:
+                            applications = Application.objects.filter(status="На розгляді")
                         return render(request, "adminAccept.html", locals())
                 else:
                     applications = Application.objects.filter(user__email=request.session["email"])
                     return render(request, "adminApplied.html", locals())
-            else:
-                return redirect(reverse("main"))
-        except KeyError:
+        else:
+            print("exit")
             return redirect(reverse("main"))
     def post(self, request):
         data = json.loads(request.body)
