@@ -96,7 +96,7 @@ aside p:hover {
     width: 800px;
     margin-top: 130px;
     /* max-height: calc(12 * 50px + 20px); */
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 table {
@@ -141,7 +141,8 @@ td {
     background-color: #D4D4D4;
 }
 .filter{
-display: inline-block;
+display: flex;
+transform: translateY(291%);
 }
 .container {
     display: block;
@@ -154,6 +155,7 @@ display: inline-block;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    margin-right: 10px;
   }
   
   /* Hide the browser's default checkbox */
@@ -173,6 +175,8 @@ display: inline-block;
     height: 25px;
     width: 25px;
     background-color: #eee;
+    border-color: black;
+    border-style: groove;
   }
   
   /* On mouse-over, add a grey background color */

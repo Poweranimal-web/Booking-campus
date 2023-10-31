@@ -4,20 +4,20 @@
 <link rel="stylesheet" href="{% static 'css\adminAccept.css' %}">
 {% endblock %}
 {% block content %}
-<form class="filter">
+<form class="filter" method="get">
         <label class="container">На розгляді
-            <input type="checkbox" checked="checked">
+            <input type="checkbox" class="checkbox" name="status" value="in proceed">
             <span class="checkmark"></span>
           </label>
           <label class="container">Відмволено
-            <input type="checkbox">
+            <input type="checkbox" class="checkbox" name="status" value="canceled">
             <span class="checkmark"></span>
           </label>
-          <label class="container">На розгляді
-            <input type="checkbox">
+          <label class="container">Прийнято
+            <input type="checkbox" class="checkbox" name="status" value="accepted">
             <span class="checkmark"></span>
           </label>
-          <button type="submit">Знайти</button>
+          <button type="submit" id="sort" style="margin-left: 27px;">Знайти</button>
 </form>
 <div class="table-container">
     <table>
@@ -38,8 +38,14 @@
                 {% for application in applications %}
                     <tr>
                         <td>
-                            <button class="accept-btn" value={{application.id}}>Принять</button>
-                            <button class="decline-btn" value={{application.id}}>Отклонить</button>
+                            {% if application.status == "Прийнято"%}
+                                <button class="decline-btn" value={{application.id}}>Отклонить</button>
+                            {% elif  application.status == "Відмовлено"%}
+                                <button class="accept-btn" value={{application.id}}>Принять</button>
+                            {% elif  application.status == "На розгляді"%}
+                                <button class="accept-btn" value={{application.id}}>Принять</button>
+                                <button class="decline-btn" value={{application.id}}>Отклонить</button>
+                            {% endif %}
                         </td>
                         <td>
                             <p>{{application.number_application}}</p>

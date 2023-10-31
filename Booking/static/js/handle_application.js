@@ -1,6 +1,15 @@
 const url = "http://127.0.0.1:8000/admin-lite/applications/";
 let btn_accept = document.getElementsByClassName("accept-btn");
 let btn_decline = document.getElementsByClassName("decline-btn");
+let check_boxes = document.querySelectorAll("input[type=checkbox]");
+for(var i=0;i<check_boxes.length;i++){
+    check_boxes[i].addEventListener("change", function (event){
+        let checkbox = event.target.checked;
+        check_boxes.forEach(b => b.checked = false); 
+        event.target.checked = checkbox;
+        
+    })
+}
 for(var i=0;i<btn_accept.length;i++){
     btn_accept[i].addEventListener("click",accept_application);
 }
