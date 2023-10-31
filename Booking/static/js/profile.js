@@ -47,34 +47,41 @@ function check_match_passwords(password, repeat_password){
 async function update_data(event){
     event.preventDefault();
     let match_passwords = check_match_passwords(document.getElementById("password").value,document.getElementById("repeatPassword").value);
-    if (match_passwords == true){
-        let headers = new Headers();
-        headers.append('Content-Type', 'multipart/form-data');
-        headers.append('Accept', 'multipart/form-data');
-        let formData = new FormData();
-        formData.append("text_data",JSON.stringify({
-            "status":"update_data",
-            "first_name": document.getElementById("name").value,
-            "last_name": document.getElementById("surname").value,
-            "email": document.getElementById("email").value,
-            "contact-phone": document.getElementById("phone").value,
-            "password": document.getElementById("password").value,
-        }));
-        formData.append("photo",document.getElementById("changeAvatar").files[0]);
-        const response = await fetch(url,{
-            method: "POST",
-            // headers: headers,
-            body: formData,
-        });
-        let data = await response.json();
-        if (data["status"] =="updated"){
-            window.location.reload();
+    if (String(document.getElementById("email").value).length > 0){
+        if (match_passwords == true){
+            let headers = new Headers();
+            headers.append('Content-Type', 'multipart/form-data');
+            headers.append('Accept', 'multipart/form-data');
+            let formData = new FormData();
+            formData.append("text_data",JSON.stringify({
+                "status":"update_data",
+                "first_name": document.getElementById("name").value,
+                "last_name": document.getElementById("surname").value,
+                "email": document.getElementById("email").value,
+                "contact-phone": document.getElementById("phone").value,
+                "password": document.getElementById("password").value,
+            }));
+            formData.append("photo",document.getElementById("changeAvatar").files[0]);
+            const response = await fetch(url,{
+                method: "POST",
+                // headers: headers,
+                body: formData,
+            });
+            let data = await response.json();
+            if (data["status"] =="updated"){
+                window.location.reload();
+            }
+        }
+        else{
+            let error = document.getElementById("error");
+            error.textContent = match_passwords;
+            error.style.display = "block";
         }
     }
     else{
-        let error = document.getElementById("error");
-        error.textContent = match_passwords;
-        error.style.display = "block";
+            let error = document.getElementById("error");
+            error.textContent = "email потрібен!!";
+            error.style.display = "block";
     }
 
 
