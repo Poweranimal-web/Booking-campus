@@ -102,7 +102,7 @@ class ApplyFloorPage(View):
         try:
             if request.session["auth"] and request.session["comendant"]==False:
                 campus = Campus.objects.get(id=pk)
-                floors = Floor.objects.filter(campus=campus)
+                floors = Floor.objects.filter(campus=campus).order_by("number")
                 return render(request, "adminFloor.html", locals())
             else:
                 return redirect(reverse("main"))
@@ -113,7 +113,7 @@ class ApplyFloorPage(View):
         if data["status"] == "get_rooms":
             campus = Campus.objects.get(id=pk)
             floor = Floor.objects.get(campus=campus,number=int(data["floor_num"]))
-            rooms = list(Room.objects.filter(floor=floor).values())
+            rooms = list(Room.objects.filter(floor=floor).order_by("number").values())
             return JsonResponse(rooms,safe=False)
         elif data["status"] == "send_request":
             room = Room.objects.get(id=data["id_room"])
@@ -146,7 +146,7 @@ class ApplyFloorPage(View):
 class ListCampusPage(View):
     def get(self, request):
         try:
-            if request.session["auth"] and request.session["comendant"]==False:
+            if request.session["auth"] and request.session["comendant"] == False:
                 user = User.objects.filter(email=request.session["email"]).values()[0]
                 faculty = Faculty.objects.get(id=user["faculty_id"])
                 campuses = Campus.objects.filter(faculty=faculty)
@@ -204,6 +204,9 @@ class DetailPage(View):
     def get(self,request,pk):
         campus = Campus.objects.get(id=pk)
         return render(request, "campusDetail.html",locals())
+class PaymentPage(View):
+    def get(self, request):
+        return render(request, "adminPay.html", locals())
 class GenData(View):
     def get(self,request):
         campuses = Campus.objects.all().values()

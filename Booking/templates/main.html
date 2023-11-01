@@ -51,7 +51,7 @@
           <input type="password" placeholder="Пароль" id="password-login" required>
           <span id="error-login"></span>
           <button class="registration-button" type="submit" id="login_btn">Увійти</button>
-          <button id="forgot-button">Забули пароль?</button>
+          <!-- <button id="forgot-button">Забули пароль?</button> -->
       </form>
     </div>
   {% endif %}
@@ -62,11 +62,6 @@
                 <div class="menu_wraper">
                     <ul>
                         {% if request.session.auth %}
-                            {% if request.session.comendant %}
-                                <li><a href="{% url 'apply' %}" style="display:none">Заселитися</a></li>
-                            {% else %}
-                                <li><a href="{% url 'apply' %}">Заселитися</a></li>
-                            {% endif %}
                             <li><a href="{% url 'profile' %}">Увійти до кабінету </a></li>
                         {% endif %}
                         <li><a href="#tabs">Наші гуртожитки</a></li>
@@ -88,7 +83,7 @@
                     <h1 class="title_main">Швидке заселення у гуртожиток</h1>
                     <p >Заселення у гуртожиток за 5 хвилин</p>
                     {% if request.session.auth %}
-                      <a href="{% url 'profile' %}"><button class="main_enterens_button">Заселитися</button></a>
+                      <a href="{% url 'campus' %}"><button class="main_enterens_button">Заселитися</button></a>
                     {% else %}
                         <button class="main_enterens_button" id="click">Заселитися</button>
                     {% endif %}
@@ -156,7 +151,7 @@
                       <h5>Адрес: <strong>{{campus.address}}</strong></h5>
                       <p>{{campus.detail_text}} </p>
                       <div class="button-slider-wrapper">
-                          <button class="main_enterens_button-slider">Заселитися</button>
+                          <a href="{% url 'campus' %}"><button class="main_enterens_button-slider">Заселитися</button></a>
                           <a href="{% url 'detail' pk=campus.id %}"><button class="main_enterens_button-slider-1">Більше інформації</button></a>
                       </div>
                   </div>
@@ -360,7 +355,7 @@
           </div>
           <div class="description">
               <hr/>
-              <p>© 2023 designed and developed by Bug Hunters Team</p>
+              <p>© 2023 designed and developed by BugHunters Team</p>
           </div>
       </div>
     </footer>

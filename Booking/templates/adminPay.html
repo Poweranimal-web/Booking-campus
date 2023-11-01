@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css\adminPay.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto:ital,wght@0,100;0,400;0,700;1,100&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <header id="admin-header">
+        <div class="logo">
+            <a href="{% url 'main' %}">
+                <img src="{% static 'img\Лого_англ_гориз_кольор.png' %}" alt="DUT1899">
+            </a>
+        </div>
+        <nav>
+        </nav>
+    </header>
+    <main>
+        <div class="payment-container">
+            <h2>Оберіть способ оплати</h2>
+            <img src="{% static 'img\—Pngtree—mbe style bank card icon_4035152.png' %}" alt="Payment Image" class="payment-image">
+            <a href="https://www.privat24.ua/send/ah5qn" class="payment-btn privat24-btn">Сплатити через Privat24</a>
+            <a href="https://send.monobank.ua/5tVeTp5YVN" class="payment-btn monobank-btn">Сплатити через monobank</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=ARCLN6Q8AWF9G" class="payment-btn paypal-btn">Сплатити через PayPal</a>
+            <p class="transparent-text">
+                Вартість проживання – 800 грн за місяць (включно за комунальні послуги). <br>
+                Мінімальна передоплата – 4000 грн (за 5 місяців).
+            </p>
+        </div>
+
+    </main>
+</body>
+
+</html>

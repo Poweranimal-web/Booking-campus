@@ -48,6 +48,10 @@
                                         <td>
                                             <button class="abandon-btn" value={{application.id}}>Відмінити</button>
                                         </td>
+                                    {% elif application.status == "Прийнято" %}
+                                        <td>
+                                            <a href="{% url 'payment' %}"><button class="pay-btn">Оплатити</button></a>
+                                        </td>
                                     {% endif %}
                                 </tr>
                             {% endfor %}

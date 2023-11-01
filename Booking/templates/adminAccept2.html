@@ -11,7 +11,7 @@
 {% block content %}
             <div class="table-container">
                 <div class="main-step-title-wrap">
-                   <h3>2/3 Гуртожиток ФІТ</h3> 
+                   <h3>1/2 Гуртожиток {{faculty.faculty}}</h3> 
                 </div>
                 <div class="big-slider-main">
                     {% for campus in campuses %}
@@ -33,7 +33,7 @@
                                     <p>{{campus.detail_text}}</p>
                                     <div class="button-slider-wrapper">
                                         <a href="{% url 'floor' pk=campus.id %}"><button class="main_enterens_button-slider">Заселитися</button></a>
-                                        <button class="main_enterens_button-slider-1">Більше інформації</button>
+                                        <a href="{% url 'detail' pk=campus.id %}"><button class="main_enterens_button-slider-1">Більше інформації</button></a>
                                     </div>
                             </div>
                         </div>

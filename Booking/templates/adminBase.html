@@ -25,16 +25,6 @@
             </a>
         </div>
         <nav>
-            <ul>
-
-                {% if request.session.comendant %}
-                    <li><a href="{% url 'campus' %}" style="display:none">Обрати гуртожиток</a></li>
-                {% else %}
-                    <li><a href="{% url 'campus' %}">Обрати гуртожиток</a></li>
-                {% endif %}
-                <li><a href="{% url 'profile' %}">Особистий кабінет</a></li>
-                <li>
-            </ul>
         </nav>
     </header>
     <div class="wrap-body">
@@ -45,11 +35,9 @@
                     <a href="{% url 'application' %}"><p>Заявки</p></a>
                 {% else %}
                     <a href="{% url 'application' %}"><p>Мої заявки</p></a>
-                    <a href="{% url 'apply' %}"><p>Подача заявок</p></a>
+                    <a href="{% url 'campus' %}"><p>Наші гуртожитки</p></a>
                 {% endif %}
 
-                <p>Наші гуртожитки</p>
-                <p>Новини</p>
             </div>
         </aside>
         <main>
