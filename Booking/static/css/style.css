@@ -44,6 +44,10 @@ ul li:first-child{
 ul li a{
     color: white;
 }
+ul li a{
+    transition: all 0.5s ease;    
+    color: white;
+}
 
 ul li select{
     color: white;
@@ -196,15 +200,16 @@ ul li select option{
     }
     
     .main_enterens_button-slider{
-    border-radius: 100px;
-    background: #F84D4D;
-    color: #FFF;
-    font-family: Roboto;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    padding: 10px 50px 10px 50px;
-    border:none;
+        border-radius: 100px;
+        color: #000;
+        border: 1px solid !important;
+        font-family: Roboto;
+        background: transparent;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        padding: 17px 37px 14px 37px;
+    /* border:none; */
     }
     .main_enterens_button-slider-1{
     border-radius: 100px;
@@ -215,7 +220,7 @@ ul li select option{
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
-    padding: 10px 50px 10px 50px;
+    padding: 13px 34px 13px 26px;
     border:none;
     margin-left: 20px;
     }
@@ -323,7 +328,22 @@ footer{
     font-weight: 900;
     line-height: normal;
     }
-    
+  
+button {
+    cursor: pointer;
+}
+#tabs ul li:hover a {
+    color: #fff;
+}
+#tabs ul li {
+    cursor: pointer;
+}
+#tabs ul li:hover {
+    background-color: #F84D4D;
+}
+.menu_wraper ul li a:hover{
+    color: #D9D9D9;
+}
     
 #tabs ul {
     display: flex;
@@ -377,4 +397,9 @@ h2{
     
 .main-slider-wrapper-extra .slider-main-wrapper .slick-list .slick-track img{
             width: 640px !important
+}
+.button-slider-wrapper a button:hover{
+    background: #F84D4D;
+    color: #fff;
+    transition: all 0.8s ease;
 }
