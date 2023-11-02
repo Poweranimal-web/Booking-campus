@@ -50,7 +50,7 @@
                                         </td>
                                     {% elif application.status == "Прийнято" %}
                                         <td>
-                                            <a href="{% url 'payment' %}"><button class="pay-btn">Оплатити</button></a>
+                                            <button class="pay-btn" value={{application.id}}>Оплатити</button>
                                         </td>
                                     {% endif %}
                                 </tr>

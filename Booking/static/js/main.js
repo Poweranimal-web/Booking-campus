@@ -4,9 +4,11 @@ var close_btn = document.getElementById("close-button");
 var close_btn_login = document.getElementById("close-button-login");
 var open_login_modal_button = document.getElementById("login-button");
 var btn = document.getElementById("click");
+var btn2 = document.getElementById("click2");
 var form_reg = document.getElementById("form_reg");
 var form_login = document.getElementById("form_login")
 btn.addEventListener("click", show_register_modal);
+btn2.addEventListener("click", show_register_modal);
 open_login_modal_button.addEventListener("click", show_login_modal);
 close_btn.addEventListener("click", close_modal);
 form_reg.addEventListener("submit", create_user);

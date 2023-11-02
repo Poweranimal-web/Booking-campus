@@ -49,25 +49,23 @@ class ApplicationsPage(View):
         if request.session["auth"]:
                 if request.session["comendant"]:
                         data = request.GET.dict()
-                        applications = Application.objects.filter(status="На розгляді")
+                        applications = Application.objects.all()
                         try:
                             if data["status"] == "canceled":
-                                        print("jdsjkds")
                                         applications = Application.objects.filter(status="Відмовлено")
                             elif data["status"] == "in proceed":
-                                        print("вава")
                                         applications = Application.objects.filter(status="На розгляді")
-                            elif data["status"]  == "accepted":
-                                        print("sdssd")
+                            elif data["status"] == "accepted":
                                         applications = Application.objects.filter(status="Прийнято")
+                            elif data["status"] == "payed":
+                                        applications = Application.objects.filter(status="Оплачено")
                         except KeyError:
-                            applications = Application.objects.filter(status="На розгляді")
+                            applications = Application.objects.all()
                         return render(request, "adminAccept.html", locals())
                 else:
                     applications = Application.objects.filter(user__email=request.session["email"])
                     return render(request, "adminApplied.html", locals())
         else:
-            print("exit")
             return redirect(reverse("main"))
     def post(self, request):
         data = json.loads(request.body)
@@ -78,6 +76,9 @@ class ApplicationsPage(View):
             room.save()
             Application.objects.filter(id=data["id"]).delete()
             return JsonResponse({"status":"deleted"})
+        elif data["status"] == "pay room":
+            Application.objects.filter(id=data["id"]).update(status="Оплачено")
+            return JsonResponse({"status": "payed"})
         elif data["status"] == "accept application":
             Application.objects.filter(id=data["id"]).update(status="Прийнято")
             return JsonResponse({"status": "accepted"})
@@ -207,6 +208,9 @@ class DetailPage(View):
 class PaymentPage(View):
     def get(self, request):
         return render(request, "adminPay.html", locals())
+class DocumentationPage(View):
+    def get(self, request):
+        return render(request, "documentation.html", locals())
 class GenData(View):
     def get(self,request):
         campuses = Campus.objects.all().values()

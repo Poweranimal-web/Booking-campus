@@ -17,6 +17,10 @@
             <input type="checkbox" class="checkbox" name="status" value="accepted">
             <span class="checkmark"></span>
           </label>
+          <label class="container">Оплачено
+            <input type="checkbox" class="checkbox" name="status" value="payed">
+            <span class="checkmark"></span>
+          </label>
           <button type="submit" id="sort" style="margin-left: 27px;">Знайти</button>
 </form>
 <div class="table-container">
@@ -24,6 +28,7 @@
         <thead>
             <tr>
                 <th>Заявки</th>
+                <th>Статус</th>
                 <th>Номер Заявки</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
@@ -46,6 +51,9 @@
                                 <button class="accept-btn" value={{application.id}}>Принять</button>
                                 <button class="decline-btn" value={{application.id}}>Отклонить</button>
                             {% endif %}
+                        </td>
+                        <td>
+                            <p>{{application.status}}</p>
                         </td>
                         <td>
                             <p>{{application.number_application}}</p>
